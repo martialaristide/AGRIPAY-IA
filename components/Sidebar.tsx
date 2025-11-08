@@ -1,7 +1,7 @@
-
 import React from 'react';
 import type { Page } from '../types';
 import { DashboardIcon, AssistantIcon, FinanceIcon, AnalyticsIcon, LeafIcon } from './IconComponents';
+import { useTranslations } from '../contexts/LanguageContext';
 
 interface SidebarProps {
   activePage: Page;
@@ -28,6 +28,7 @@ const NavItem: React.FC<{
 );
 
 const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage }) => {
+  const { t } = useTranslations();
   return (
     <aside className="w-64 bg-white shadow-md flex-shrink-0 p-4 hidden md:flex md:flex-col justify-between">
       <div>
@@ -39,25 +40,25 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage }) => {
           <ul>
             <NavItem
               icon={<DashboardIcon />}
-              label="Dashboard"
+              label={t('sidebar_dashboard')}
               isActive={activePage === 'dashboard'}
               onClick={() => setActivePage('dashboard')}
             />
             <NavItem
               icon={<AssistantIcon />}
-              label="AI Assistant"
+              label={t('sidebar_assistant')}
               isActive={activePage === 'assistant'}
               onClick={() => setActivePage('assistant')}
             />
             <NavItem
               icon={<FinanceIcon />}
-              label="Finance"
+              label={t('sidebar_finance')}
               isActive={activePage === 'finance'}
               onClick={() => setActivePage('finance')}
             />
             <NavItem
               icon={<AnalyticsIcon />}
-              label="Analytics"
+              label={t('sidebar_analytics')}
               isActive={activePage === 'analytics'}
               onClick={() => setActivePage('analytics')}
             />
@@ -65,10 +66,10 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage }) => {
         </nav>
       </div>
       <div className="p-4 rounded-lg bg-teal-50 text-center">
-        <h4 className="font-bold text-sm text-[#1F7A6B]">Upgrade to Pro</h4>
-        <p className="text-xs text-gray-500 mt-1">Get access to satellite imagery and advanced analytics.</p>
+        <h4 className="font-bold text-sm text-[#1F7A6B]">{t('sidebar_pro_title')}</h4>
+        <p className="text-xs text-gray-500 mt-1">{t('sidebar_pro_description')}</p>
         <button className="bg-[#1F7A6B] text-white text-xs font-bold py-2 px-4 rounded-lg mt-3 w-full hover:bg-teal-800 transition-colors">
-            Learn More
+            {t('sidebar_pro_button')}
         </button>
       </div>
     </aside>

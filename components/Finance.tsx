@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import type { Transaction } from '../types';
 import DashboardCard from './DashboardCard';
 import { WalletIcon } from './IconComponents';
+import { useTranslations } from '../contexts/LanguageContext';
 
 const mockTransactions: Transaction[] = [
   { id: '1', type: 'Credit', amount: 350.00, description: 'Maize Sale - Buyer Corp', date: '2024-07-20', status: 'Completed' },
@@ -14,25 +14,32 @@ const mockTransactions: Transaction[] = [
 ];
 
 const StatusBadge: React.FC<{ status: 'Completed' | 'Pending' | 'Failed' }> = ({ status }) => {
+    const { t } = useTranslations();
     const baseClasses = "px-2 py-1 text-xs font-semibold rounded-full";
     const statusClasses = {
         Completed: "bg-green-100 text-green-800",
         Pending: "bg-yellow-100 text-yellow-800",
         Failed: "bg-red-100 text-red-800",
     };
-    return <span className={`${baseClasses} ${statusClasses[status]}`}>{status}</span>;
+     const statusText = {
+      Completed: t('status_completed'),
+      Pending: t('status_pending'),
+      Failed: t('status_failed'),
+    }
+    return <span className={`${baseClasses} ${statusClasses[status]}`}>{statusText[status]}</span>;
 }
 
 const Finance: React.FC = () => {
+    const { t } = useTranslations();
     const [activeTab, setActiveTab] = useState<'send' | 'request'>('send');
 
     return (
         <div className="space-y-8">
             <DashboardCard
                 icon={<WalletIcon className="w-8 h-8 text-green-600" />}
-                title="USDC Wallet Balance"
+                title={t('finance_balance_title')}
                 value="$1,250.75"
-                description="Available for payments and loans"
+                description={t('finance_balance_desc')}
                 colorClass="bg-green-100"
             />
 
@@ -41,36 +48,36 @@ const Finance: React.FC = () => {
                 <div className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-md">
                     <div className="flex border-b border-gray-200">
                         <button onClick={() => setActiveTab('send')} className={`py-2 px-4 text-sm font-semibold transition-colors ${activeTab === 'send' ? 'text-[#1F7A6B] border-b-2 border-[#1F7A6B]' : 'text-gray-500'}`}>
-                            Send USDC
+                            {t('finance_tab_send')}
                         </button>
                         <button onClick={() => setActiveTab('request')} className={`py-2 px-4 text-sm font-semibold transition-colors ${activeTab === 'request' ? 'text-[#1F7A6B] border-b-2 border-[#1F7A6B]' : 'text-gray-500'}`}>
-                            Request Loan
+                            {t('finance_tab_request')}
                         </button>
                     </div>
                     {activeTab === 'send' && (
                         <form className="mt-6 space-y-4">
                             <div>
-                                <label htmlFor="recipient" className="block text-sm font-medium text-gray-700">Recipient Address</label>
+                                <label htmlFor="recipient" className="block text-sm font-medium text-gray-700">{t('finance_send_recipient_label')}</label>
                                 <input type="text" id="recipient" className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#1F7A6B] focus:border-[#1F7A6B] sm:text-sm" placeholder="0x..."/>
                             </div>
                             <div>
-                                <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount (USDC)</label>
+                                <label htmlFor="amount" className="block text-sm font-medium text-gray-700">{t('finance_send_amount_label')}</label>
                                 <input type="number" id="amount" className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#1F7A6B] focus:border-[#1F7A6B] sm:text-sm" placeholder="100.00"/>
                             </div>
                             <button type="submit" className="w-full bg-[#1F7A6B] text-white py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium hover:bg-teal-800 transition-colors">
-                                Send Payment
+                                {t('finance_send_button')}
                             </button>
                         </form>
                     )}
                      {activeTab === 'request' && (
                         <div className="mt-6 space-y-4">
-                            <p className="text-sm text-gray-600">Request a microloan for your farming needs. Our AI will assess your request based on your farming history and yield predictions.</p>
+                            <p className="text-sm text-gray-600">{t('finance_request_desc')}</p>
                              <div>
-                                <label htmlFor="loan-amount" className="block text-sm font-medium text-gray-700">Loan Amount (USDC)</label>
+                                <label htmlFor="loan-amount" className="block text-sm font-medium text-gray-700">{t('finance_request_amount_label')}</label>
                                 <input type="number" id="loan-amount" className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#1F7A6B] focus:border-[#1F7A6B] sm:text-sm" placeholder="500.00"/>
                             </div>
                             <button type="submit" className="w-full bg-[#3AA6FF] text-white py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium hover:bg-blue-600 transition-colors">
-                                Submit Loan Request
+                                {t('finance_request_button')}
                             </button>
                         </div>
                     )}
@@ -78,15 +85,15 @@ const Finance: React.FC = () => {
 
                 {/* Transaction History */}
                 <div className="lg:col-span-2 bg-white p-4 rounded-2xl shadow-md">
-                    <h3 className="text-lg font-semibold mb-4 text-[#0F172A] p-2">Full Transaction History</h3>
+                    <h3 className="text-lg font-semibold mb-4 text-[#0F172A] p-2">{t('finance_history_title')}</h3>
                     <div className="overflow-x-auto max-h-96">
                         <table className="w-full text-sm text-left">
                             <thead className="text-xs text-gray-500 uppercase bg-[#F7FAFC] sticky top-0">
                                 <tr>
-                                    <th scope="col" className="px-6 py-3">Description</th>
-                                    <th scope="col" className="px-6 py-3">Amount</th>
-                                    <th scope="col" className="px-6 py-3">Date</th>
-                                    <th scope="col" className="px-6 py-3">Status</th>
+                                    <th scope="col" className="px-6 py-3">{t('table_header_description')}</th>
+                                    <th scope="col" className="px-6 py-3">{t('table_header_amount')}</th>
+                                    <th scope="col" className="px-6 py-3">{t('table_header_date')}</th>
+                                    <th scope="col" className="px-6 py-3">{t('table_header_status')}</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y">

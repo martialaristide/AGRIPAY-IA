@@ -1,9 +1,9 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { getAgriculturalAdvice } from '../services/geminiService';
 import type { Message } from '../types';
 import { SendIcon, UploadIcon, AssistantIcon } from './IconComponents';
 import ReactMarkdown from 'react-markdown';
+import { useTranslations } from '../contexts/LanguageContext';
 
 // Helper to convert file to base64
 const fileToBase64 = (file: File): Promise<string> => {
@@ -16,8 +16,9 @@ const fileToBase64 = (file: File): Promise<string> => {
 };
 
 const AIAssistant: React.FC = () => {
+  const { t, language } = useTranslations();
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', parts: [{ text: "Hello! How can I help you with your farm today? You can ask me a question or upload a photo of a plant for diagnosis." }] },
+    { role: 'model', parts: [{ text: t('assistant_greeting') }] },
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -59,14 +60,14 @@ const AIAssistant: React.FC = () => {
         imagePayload = { mimeType: imageFile.type, data: base64Data };
       } catch (error) {
         console.error("Error converting image to base64:", error);
-        setMessages(prev => [...prev, { role: 'model', parts: [{ text: "Sorry, there was an error processing your image." }] }]);
+        setMessages(prev => [...prev, { role: 'model', parts: [{ text: t('assistant_image_error') }] }]);
         setIsLoading(false);
         return;
       }
     }
     
-    const prompt = imageFile && !input.trim() ? "Please analyze this image." : input;
-    const responseText = await getAgriculturalAdvice(prompt, imagePayload);
+    const prompt = imageFile && !input.trim() ? t('assistant_image_prompt') : input;
+    const responseText = await getAgriculturalAdvice(prompt, language, imagePayload);
 
     setMessages((prev) => [...prev, { role: 'model', parts: [{ text: responseText }] }]);
     setIsLoading(false);
@@ -124,7 +125,7 @@ const AIAssistant: React.FC = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && !isLoading && handleSendMessage()}
-            placeholder="Ask about your crops or upload an image..."
+            placeholder={t('assistant_input_placeholder')}
             className="w-full py-3 pl-12 pr-24 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#1F7A6B]"
             disabled={isLoading}
           />

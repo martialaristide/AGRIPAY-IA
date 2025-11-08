@@ -1,4 +1,3 @@
-
 import { GoogleGenAI } from "@google/genai";
 import type { GenerateContentResponse } from "@google/genai";
 
@@ -12,7 +11,9 @@ const ai = new GoogleGenAI({ apiKey: API_KEY! });
 
 const model = 'gemini-2.5-flash';
 
-const systemInstruction = `You are AgriPay AI, an expert agricultural assistant for small-scale farmers. 
+const getSystemInstruction = (language: 'en' | 'fr') => `
+You are AgriPay AI, an expert agricultural assistant for small-scale farmers. 
+Your response language MUST be ${language === 'en' ? 'English' : 'French'}.
 Provide clear, concise, and actionable advice. 
 Diagnose plant issues from images and text. Suggest treatments, and give recommendations on soil, weather, and yield prediction. 
 Your tone should be helpful, encouraging, and easy to understand for a non-expert audience.
@@ -20,6 +21,7 @@ Format your responses using markdown for readability, including headings, lists,
 
 export const getAgriculturalAdvice = async (
   prompt: string,
+  language: 'en' | 'fr',
   image?: { mimeType: string; data: string }
 ): Promise<string> => {
   if (!API_KEY) {
@@ -40,7 +42,7 @@ export const getAgriculturalAdvice = async (
       model: model,
       contents: { parts: parts },
       config: {
-        systemInstruction: systemInstruction,
+        systemInstruction: getSystemInstruction(language),
       },
     });
 
