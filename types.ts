@@ -1,5 +1,5 @@
 
-export type Page = 'dashboard' | 'assistant' | 'finance' | 'analytics';
+export type Page = 'dashboard' | 'assistant' | 'finance' | 'analytics' | 'planner';
 
 export interface Transaction {
   id: string;

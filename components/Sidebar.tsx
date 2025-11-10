@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Page } from '../types';
-import { DashboardIcon, AssistantIcon, FinanceIcon, AnalyticsIcon, LeafIcon } from './IconComponents';
+import { DashboardIcon, AssistantIcon, FinanceIcon, AnalyticsIcon, LeafIcon, PlannerIcon } from './IconComponents';
 import { useTranslations } from '../contexts/LanguageContext';
 
 interface SidebarProps {
@@ -61,6 +61,12 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage }) => {
               label={t('sidebar_analytics')}
               isActive={activePage === 'analytics'}
               onClick={() => setActivePage('analytics')}
+            />
+             <NavItem
+              icon={<PlannerIcon />}
+              label={t('sidebar_planner')}
+              isActive={activePage === 'planner'}
+              onClick={() => setActivePage('planner')}
             />
           </ul>
         </nav>

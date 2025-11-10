@@ -48,6 +48,19 @@ export const AnalyticsIcon: React.FC<{className?: string}> = ({className}) => (
     </svg>
 );
 
+export const PlannerIcon: React.FC<{className?: string}> = ({className}) => (
+    <svg {...iconProps} className={className || iconProps.className} viewBox="0 0 24 24">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4"></path>
+        <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+        <path d="M18 16.5v1.5l.5 .5"></path>
+        <path d="M16 3v4"></path>
+        <path d="M8 3v4"></path>
+        <path d="M4 11h7m4 0h5"></path>
+    </svg>
+);
+
+
 export const SunIcon: React.FC<{className?: string}> = ({className}) => (
     <svg {...iconProps} className={className || iconProps.className} viewBox="0 0 24 24">
       <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
@@ -91,5 +104,13 @@ export const UploadIcon: React.FC<{className?: string}> = ({className}) => (
         <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
         <path d="M12 11v6" />
         <path d="M9.5 13.5l2.5 -2.5l2.5 2.5" />
+    </svg>
+);
+
+export const CameraIcon: React.FC<{className?: string}> = ({className}) => (
+    <svg {...iconProps} className={className || iconProps.className} viewBox="0 0 24 24">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"></path>
+        <path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
     </svg>
 );

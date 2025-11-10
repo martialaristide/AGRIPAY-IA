@@ -5,6 +5,7 @@ export const translations = {
     'page_title_assistant': 'AI Assistant',
     'page_title_finance': 'Finance',
     'page_title_analytics': 'Analytics',
+    'page_title_planner': 'AI Crop Planner',
 
     // Header
     'header_search_placeholder': 'Search...',
@@ -15,6 +16,7 @@ export const translations = {
     'sidebar_assistant': 'AI Assistant',
     'sidebar_finance': 'Finance',
     'sidebar_analytics': 'Analytics',
+    'sidebar_planner': 'Planner',
     'sidebar_pro_title': 'Upgrade to Pro',
     'sidebar_pro_description': 'Get access to satellite imagery and advanced analytics.',
     'sidebar_pro_button': 'Learn More',
@@ -58,6 +60,16 @@ export const translations = {
     'assistant_input_placeholder': 'Ask about your crops or upload an image...',
     'assistant_image_error': 'Sorry, there was an error processing your image.',
     'assistant_image_prompt': 'Please analyze this image.',
+    'assistant_camera_tooltip': 'Use Camera',
+    'assistant_upload_tooltip': 'Upload Image',
+
+    // Camera Modal
+    'cameramodal_title': 'Capture Image',
+    'cameramodal_take_photo': 'Take Photo',
+    'cameramodal_retake': 'Retake',
+    'cameramodal_accept': 'Accept & Use',
+    'cameramodal_error': 'Could not access the camera. Please ensure you have granted permission and are not using it in another application.',
+
 
     // Finance
     'finance_balance_title': 'USDC Wallet Balance',
@@ -91,6 +103,21 @@ export const translations = {
     'analytics_soil_medium': 'Medium',
     'analytics_soil_ph_value': '6.8 (Slightly Acidic)',
     'analytics_soil_recommendation': 'AI Recommendation: Apply a nitrogen-rich fertilizer. See AI Assistant for specific product suggestions.',
+
+    // Planner
+    'planner_title': 'Generate Your Custom Crop Plan',
+    'planner_description': 'Fill in the details below, and our AI will create a personalized, week-by-week plan for a successful harvest.',
+    'planner_form_crop': 'Crop Type',
+    'planner_form_crop_placeholder': 'e.g., Maize, Tomatoes',
+    'planner_form_season': 'Planting Season',
+    'planner_form_season_placeholder': 'e.g., Spring 2024',
+    'planner_form_land_size': 'Land Size (Hectares)',
+    'planner_form_land_size_placeholder': 'e.g., 2.5',
+    'planner_form_location': 'General Location',
+    'planner_form_location_placeholder': 'e.g., Rift Valley, Kenya',
+    'planner_form_button': 'Generate Plan',
+    'planner_initial_prompt': 'Your generated plan will appear here.',
+    'planner_loading': 'Generating your plan... This may take a moment.',
   },
   fr: {
     // Page Titles
@@ -98,6 +125,7 @@ export const translations = {
     'page_title_assistant': 'Assistant IA',
     'page_title_finance': 'Finance',
     'page_title_analytics': 'Analyses',
+    'page_title_planner': 'Planificateur de Culture IA',
 
     // Header
     'header_search_placeholder': 'Rechercher...',
@@ -108,6 +136,7 @@ export const translations = {
     'sidebar_assistant': 'Assistant IA',
     'sidebar_finance': 'Finance',
     'sidebar_analytics': 'Analyses',
+    'sidebar_planner': 'Planificateur',
     'sidebar_pro_title': 'Passer à Pro',
     'sidebar_pro_description': 'Accédez à l\'imagerie satellite et aux analyses avancées.',
     'sidebar_pro_button': 'En savoir plus',
@@ -151,6 +180,15 @@ export const translations = {
     'assistant_input_placeholder': 'Questionnez sur vos cultures ou uploadez une image...',
     'assistant_image_error': 'Désolé, une erreur est survenue lors du traitement de votre image.',
     'assistant_image_prompt': 'Veuillez analyser cette image.',
+    'assistant_camera_tooltip': 'Utiliser la caméra',
+    'assistant_upload_tooltip': 'Uploader une image',
+
+    // Camera Modal
+    'cameramodal_title': 'Capturer une image',
+    'cameramodal_take_photo': 'Prendre une photo',
+    'cameramodal_retake': 'Reprendre',
+    'cameramodal_accept': 'Accepter et utiliser',
+    'cameramodal_error': 'Impossible d\'accéder à la caméra. Veuillez vous assurer que vous avez accordé la permission et que vous ne l\'utilisez pas dans une autre application.',
 
     // Finance
     'finance_balance_title': 'Solde du portefeuille USDC',
@@ -184,5 +222,20 @@ export const translations = {
     'analytics_soil_medium': 'Moyen',
     'analytics_soil_ph_value': '6.8 (Légèrement acide)',
     'analytics_soil_recommendation': 'Recommandation IA: Appliquez un engrais riche en azote. Voir l\'Assistant IA pour des suggestions de produits spécifiques.',
+
+    // Planner
+    'planner_title': 'Générez Votre Plan de Culture Personnalisé',
+    'planner_description': 'Remplissez les détails ci-dessous, et notre IA créera un plan personnalisé, semaine par semaine, pour une récolte réussie.',
+    'planner_form_crop': 'Type de Culture',
+    'planner_form_crop_placeholder': 'ex: Maïs, Tomates',
+    'planner_form_season': 'Saison de Plantation',
+    'planner_form_season_placeholder': 'ex: Printemps 2024',
+    'planner_form_land_size': 'Taille du Terrain (Hectares)',
+    'planner_form_land_size_placeholder': 'ex: 2.5',
+    'planner_form_location': 'Localisation Générale',
+    'planner_form_location_placeholder': 'ex: Vallée du Rift, Kenya',
+    'planner_form_button': 'Générer le Plan',
+    'planner_initial_prompt': 'Votre plan généré apparaîtra ici.',
+    'planner_loading': 'Génération de votre plan... Cela peut prendre un moment.',
   },
 };

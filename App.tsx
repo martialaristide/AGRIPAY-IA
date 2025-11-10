@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import AIAssistant from './components/AIAssistant';
 import Finance from './components/Finance';
 import Analytics from './components/Analytics';
+import Planner from './components/Planner';
 import type { Page } from './types';
 import { LanguageProvider, useTranslations } from './contexts/LanguageContext';
 
@@ -17,6 +18,7 @@ const MainApp: React.FC = () => {
     assistant: t('page_title_assistant'),
     finance: t('page_title_finance'),
     analytics: t('page_title_analytics'),
+    planner: t('page_title_planner'),
   };
 
   const renderContent = () => {
@@ -29,6 +31,8 @@ const MainApp: React.FC = () => {
         return <Finance />;
       case 'analytics':
         return <Analytics />;
+      case 'planner':
+        return <Planner />;
       default:
         return <Dashboard setActivePage={setActivePage} />;
     }
